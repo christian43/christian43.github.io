@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Christian Saal</title>
+    <link>https://christian43.github.io/</link>
+    <description>Recent content on Christian Saal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Map of Potsdam</title>
+      <link>https://christian43.github.io/project/potsdam_map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/project/potsdam_map/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Twitter ECSS Wordcloud</title>
+      <link>https://christian43.github.io/project/wordcloud_tweets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/project/wordcloud_tweets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Change Point Detection</title>
+      <link>https://christian43.github.io/post/2021-04-26-changepoint/</link>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/post/2021-04-26-changepoint/</guid>
+      <description>Könnte interessant sein.. In diesem Beitrag zeige ich ganz kurz und knapp wie Segmente innerhalb einer Verlaufskurve detektiert werden können. Verlaufskurven kommen im Sport ja recht häufig vor. Am Beispiel meiner Laufdaten, die von einer Smart Watch aufgezeichnet wurden, zeige ich eine mögliche Vorgehensweise mit R.
+Eine schöne Übersicht über die verschiedenen Vorgehensweisen bietet Saskia Otto auf ihrer Homepage. Etwas ausführlicher beschäftigen sich Burg &amp;amp; Williams (2020) mit den verschiedenen Ansätzen.</description>
+    </item>
+    
+    <item>
+      <title>Christian Saal</title>
+      <link>https://christian43.github.io/about/</link>
+      <pubDate>Tue, 20 Apr 2021 21:26:26 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/about/</guid>
+      <description>Nach meinem Studium der Sportwissenschaften in Berlin und einer Promotion in Leipzig bin ich mit meiner Familie in Potsdam sicher gelandet. Aktuell arbeite ich als Freelancer mit verschiedenen Partner aus dem Sport zusammen.
+Meine Interessen liegen in dem Bereich der datengestützten Analyse sportlicher Bewegungen und sportlicher Ereignisse. Das kann die Unterstützung im langfristigen Leistungsaufbau im Trainingsprozess oder auch die Prognose von Wettkampfleistungen betreffen. Hier versuche ich mich hinsichtlich der statistischen Verfahren und Analysetools immer auf dem laufenden zu halten.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,97 @@
+
+---
+title: Change Point Detection
+author: Christian Saal
+date: '`r Sys.Date()`'
+slug: []
+categories: []
+tags: [R]
+draft: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dpi=300,comment=NA)
+knitr::opts_knit$set(global.par = TRUE)
+
+
+```
+
+#### Könnte interessant sein..
+
+In diesem Beitrag zeige ich ganz kurz und knapp wie Segmente innerhalb einer Verlaufskurve detektiert
+werden können. Verlaufskurven kommen im Sport ja recht häufig vor. Am Beispiel meiner Laufdaten, die
+von einer Smart Watch aufgezeichnet wurden, zeige ich eine mögliche Vorgehensweise mit R. 
+
+Eine schöne Übersicht über die verschiedenen Vorgehensweisen bietet [Saskia
+Otto](https://www.marinedatascience.co/blog/2019/09/28/comparison-of-change-point-detection-methods/)
+auf ihrer Homepage. Etwas ausführlicher beschäftigen sich [Burg & Williams
+(2020)](https://arxiv.org/pdf/2003.06222.pdf) mit den verschiedenen Ansätzen. 
+
+Der Datensatz ist vorab schon bearbeitet und bereinigt.
+
+
+```{r, include = FALSE}
+
+# read data
+
+myrun <- read.csv("data/running.csv", header = TRUE, sep = ";")
+par(bty = "n")
+
+```
+
+```{r}
+
+# load package
+
+library(changepoint)
+
+# inspect data
+
+str(myrun)
+
+```
+
+Mich interessiert vor allem die Laufgeschwindigkeit, die als Variable Speed vorliegt, in
+Abhängigkeit der gelaufenen Zeit.
+
+```{r, fig.width = 7, fig.height = 5}
+
+# plot it 
+
+plot(myrun$speed, type = "l",
+	 xlab = "Time [s]",
+	 ylab = "Speed [m/s]",
+	 main = "My evening run")
+
+```
+
+Auf den ersten Blick eigentlich recht konstant. Normalerweise laufe ich zur Erwärmung ein paar
+Minuten langsamer, um dann am Parkeingang eine kleine Pause für Dehnungsübungen zu machen. 
+
+```{r}
+# detect change points
+
+cpt <- cpt.mean(myrun$speed,
+				method = "PELT",
+				penalty = "BIC",
+				class = FALSE)
+cpt
+
+```
+
+Die Ausgabe zeigt die Punkte auf der X-Achse, die nun auch visualisiert werden können.
+
+```{r, fig.width = 7, fig.height = 5}
+
+# plot it again and mark the points
+
+plot(myrun$speed, type = "l",
+	 xlab = "Time [s]",
+	 ylab = "Speed [m/s]",
+	 main = "My evening run")
+abline(v = cpt, col = "red") 
+
+```
+
+Was für einen Lauf geht, geht natürlich auch für ein Set von Läufen. So können Segmente gefiltert
+werden und beispielsweise die Erwärmung oder andere definierte Abschnitte genauer analysiert werden.

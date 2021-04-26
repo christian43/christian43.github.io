@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://christian43.github.io/project/potsdam_map/</loc>
+  </url><url>
+    <loc>https://christian43.github.io/project/wordcloud_tweets/</loc>
+  </url><url>
+    <loc>https://christian43.github.io/post/2021-04-26-changepoint/</loc>
+    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://christian43.github.io/</loc>
+    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://christian43.github.io/post/</loc>
+    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://christian43.github.io/tags/r/</loc>
+    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://christian43.github.io/tags/</loc>
+    <lastmod>2021-04-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://christian43.github.io/about/</loc>
+    <lastmod>2021-04-20T21:26:26+02:00</lastmod>
+  </url><url>
+    <loc>https://christian43.github.io/categories/</loc>
+  </url><url>
+    <loc>https://christian43.github.io/tags/css/</loc>
+  </url><url>
+    <loc>https://christian43.github.io/tags/html/</loc>
+  </url><url>
+    <loc>https://christian43.github.io/tags/java-script/</loc>
+  </url><url>
+    <loc>https://christian43.github.io/project/</loc>
+  </url>
+</urlset>
