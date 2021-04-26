@@ -10,7 +10,7 @@ draft: false
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(dpi=300,comment=NA,messages = FALSE)
+knitr::opts_chunk$set(dpi=300,comment=NA,message=FALSE)
 knitr::opts_knit$set(global.par = TRUE)
 
 ```
