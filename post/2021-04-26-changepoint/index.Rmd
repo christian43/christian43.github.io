@@ -6,7 +6,7 @@ date: '`r Sys.Date()`'
 slug: []
 categories: []
 tags: [R]
-draft: no
+draft: false
 ---
 
 ```{r setup, include=FALSE}
@@ -59,7 +59,7 @@ Abhängigkeit der gelaufenen Zeit.
 # plot it 
 
 plot(myrun$speed, type = "l",
-	 xlab = "Time [s]",
+	 xlab = "Index",
 	 ylab = "Speed [m/s]",
 	 main = "My evening run")
 
@@ -86,7 +86,7 @@ Die Ausgabe zeigt die Punkte auf der X-Achse, die nun auch visualisiert werden k
 # plot it again and mark the points
 
 plot(myrun$speed, type = "l",
-	 xlab = "Time [s]",
+	 xlab = "Index",
 	 ylab = "Speed [m/s]",
 	 main = "My evening run")
 abline(v = cpt, col = "red") 
