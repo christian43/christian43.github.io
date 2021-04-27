@@ -26,6 +26,29 @@
     </item>
     
     <item>
+      <title>Datenschutz</title>
+      <link>https://christian43.github.io/datenschutz/</link>
+      <pubDate>Tue, 27 Apr 2021 19:53:31 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/datenschutz/</guid>
+      <description>Hosting Mein Hoster erhebt in sog. Logfiles folgende Daten, die Ihr Browser übermittelt:
+IP-Adresse, die Adresse der vorher besuchten Website (Referer Anfrage-Header), Datum und Uhrzeit der Anfrage, Zeitzonendifferenz zur Greenwich Mean Time, Inhalt der Anforderung, HTTP-Statuscode, übertragene Datenmenge, Website, von der die Anforderung kommt und Informationen zu Browser und Betriebssystem.
+Das ist erforderlich, um unsere Website anzuzeigen und die Stabilität und Sicherheit zu gewährleisten. Dies entspricht unserem berechtigten Interesse im Sinne des Art.</description>
+    </item>
+    
+    <item>
+      <title>Impressum</title>
+      <link>https://christian43.github.io/impressum/</link>
+      <pubDate>Tue, 27 Apr 2021 19:47:31 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/impressum/</guid>
+      <description>Angaben gemäß § 5 TMG
+Christian Saal
+Karl-Liebknecht-Straße 121
+14482 Potsdam</description>
+    </item>
+    
+    <item>
       <title>Change Point Detection</title>
       <link>https://christian43.github.io/post/2021-04-26-changepoint/</link>
       <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
@@ -42,7 +65,7 @@ Eine schöne Übersicht über die verschiedenen Vorgehensweisen bietet Saskia Ot
       
       <guid>https://christian43.github.io/about/</guid>
       <description>Nach meinem Studium der Sportwissenschaften in Berlin und einer Promotion in Leipzig bin ich mit meiner Familie in Potsdam sicher gelandet. Aktuell arbeite ich als Freelancer mit verschiedenen Partner aus dem Sport zusammen.
-Meine Interessen liegen in dem Bereich der datengestützten Analyse sportlicher Bewegungen und sportlicher Ereignisse. Das kann die Unterstützung im langfristigen Leistungsaufbau im Trainingsprozess oder auch die Prognose von Wettkampfleistungen betreffen. Hier versuche ich mich hinsichtlich der statistischen Verfahren und Analysetools immer auf dem laufenden zu halten.</description>
+Meine Interessen liegen in dem Bereich der datengestützten Analyse sportlicher Bewegungen und sportlicher Ereignisse. Das kann die Unterstützung im langfristigen Leistungsaufbau oder auch die Prognose von Wettkampfleistungen betreffen. Hier versuche ich mich hinsichtlich der statistischen Verfahren und Analysetools immer auf dem laufenden zu halten.</description>
     </item>
     
   </channel>
