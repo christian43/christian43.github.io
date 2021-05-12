@@ -84,7 +84,7 @@ names(dfClust) <- c('event_type','cluster')
 
 Displaying the results shows that the first cluster contains very short sequences. There are some
 DUEL events in there and two sequences ending by a goal. The second cluster includes sequences that
-end with a SHOT and are longer sequences.  
+end with a SHOT  and one with a GOAL and are longer sequences.  
 
 ```{r}
 

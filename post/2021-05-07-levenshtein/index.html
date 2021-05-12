@@ -185,7 +185,7 @@ dfClust        <span style="color:#f92672">&lt;-</span> <span style="color:#a6e2
 <span style="color:#a6e22e">names</span>(dfClust) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;event_type&#39;</span>,<span style="color:#e6db74">&#39;cluster&#39;</span>)
 </code></pre></div><p>Displaying the results shows that the first cluster contains very short sequences. There are some
 DUEL events in there and two sequences ending by a goal. The second cluster includes sequences that
-end with a SHOT and are longer sequences.</p>
+end with a SHOT  and one with a GOAL and are longer sequences.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster1 <span style="color:#f92672">&lt;-</span> dfClust<span style="color:#a6e22e">[which</span>(dfClust<span style="color:#f92672">$</span>cluster <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>),]
 cluster2 <span style="color:#f92672">&lt;-</span> dfClust<span style="color:#a6e22e">[which</span>(dfClust<span style="color:#f92672">$</span>cluster <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>),]
 
