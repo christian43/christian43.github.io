@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cluster Strings</title>
+      <link>https://christian43.github.io/post/2021-05-07-levenshtein/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/post/2021-05-07-levenshtein/</guid>
+      <description>Distance between strings  Edit distance, also called Levensthein distance, is a measure of the number of primary edits that would need to be made to transform one string into another. &amp;ndash; Jack Davies Here is a small example where the function adist() from the R Utils package that is part of the R Distribution.
+ we create a vector containing six words next we calculate the edit distance then using a hierachical cluster analysis to find similarities  s_vec &amp;lt;- c(&amp;#34;alcool&amp;#34;,&amp;#34;alcohol&amp;#34;,&amp;#34;alcoholic&amp;#34;,&amp;#34;brandy&amp;#34;,&amp;#34;brandie&amp;#34;,&amp;#34;cachaça&amp;#34;) dist &amp;lt;- adist(s_vec) hc &amp;lt;- hclust(as.</description>
+    </item>
+    
     <item>
       <title>Change Point Detection</title>
       <link>https://christian43.github.io/post/2021-04-26-changepoint/</link>

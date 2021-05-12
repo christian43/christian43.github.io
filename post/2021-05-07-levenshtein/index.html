@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cluster Strings</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #4682B4;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://christian43.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/R.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.83.1" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Cluster Strings</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Start</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:saalchris@googlemail.com"><i class="fas fa-envelope"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/christian43"><i class="fab fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/@saalcs/"><i class="fab fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/christian-saal-27211077/"><i class="fab fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/users/7425115/christian/"><i class="fab fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Cluster Strings</h2>
+        <h5>May 12, 2021</h5>
+        
+<a href="https://christian43.github.io/tags/r"><kbd class="item-tag">R</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h1 id="distance-between-strings">Distance between strings</h1>
+<blockquote>
+<p>Edit distance, also called Levensthein distance, is a measure of the number of primary edits that
+would need to be made to transform one string into another.
+&ndash; <!-- raw HTML omitted --><a href="https://www.r-bloggers.com/2019/04/natural-language-processing-in-r-edit-distance/">Jack Davies</a><!-- raw HTML omitted --></p>
+</blockquote>
+<p>Here is a small example where the function <code>adist()</code> from the R Utils package that is part of the R
+Distribution.</p>
+<ol>
+<li>we create a vector containing six words</li>
+<li>next we calculate the edit distance</li>
+<li>then using a hierachical cluster analysis to find similarities</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">s_vec   <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;alcool&#34;</span>,<span style="color:#e6db74">&#34;alcohol&#34;</span>,<span style="color:#e6db74">&#34;alcoholic&#34;</span>,<span style="color:#e6db74">&#34;brandy&#34;</span>,<span style="color:#e6db74">&#34;brandie&#34;</span>,<span style="color:#e6db74">&#34;cachaça&#34;</span>)
+dist    <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">adist</span>(s_vec)
+hc      <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">hclust</span>(<span style="color:#a6e22e">as.dist</span>(dist))
+dfClust <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(s_vec, <span style="color:#a6e22e">cutree</span>(hc, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>))
+
+dfClust
+</code></pre></div><pre><code>##       s_vec cutree.hc..k...3.
+## 1    alcool                 1
+## 2   alcohol                 1
+## 3 alcoholic                 1
+## 4    brandy                 2
+## 5   brandie                 2
+## 6   cachaça                 3
+</code></pre><h1 id="give-it-a-try-with-soccer-data">Give it a try with soccer data</h1>
+<p>The data is extracted from eventdata. I subset all episodes or sequences that ends with a SHOT or a
+GOAL and sample a small amount of them. Now i can use these attacking sequences to run a cluster analysis.</p>
+<p>First we inspect the data in a short way.</p>
+<ol>
+<li>show me the first six vectors of strings</li>
+<li>there are 40 sequences within the dataset</li>
+<li>22 of them are unique, that means there are duplicates in there</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># inspect data</span>
+<span style="color:#a6e22e">head</span>(mydat)
+</code></pre></div><pre><code>## [1] &quot;DUEL SHOT&quot;                                                                                
+## [2] &quot;SHOT&quot;                                                                                     
+## [3] &quot;PASS PASS PASS DUEL PASS PASS PASS DUEL SHOT&quot;                                             
+## [4] &quot;PASS SHOT&quot;                                                                                
+## [5] &quot;DUEL PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS DUEL SHOT&quot;
+## [6] &quot;DUEL PASS PASS PASS PASS DUEL DUEL PASS SHOT DUEL&quot;
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">length</span>(mydat)
+</code></pre></div><pre><code>## [1] 40
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">length</span>(<span style="color:#a6e22e">unique</span>(mydat))
+</code></pre></div><pre><code>## [1] 22
+</code></pre><p>Next i create a distance matrix. Here i used the package stringdist. In this package we have the
+option to choose several distance metrics as describes in <code>help(&quot;stringdist-metrics&quot;)</code>. Here i choose
+the Jaro-Winkler distance.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">dist           <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">stringdistmatrix</span>(mydat, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jw&#34;</span>)
+hc             <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">hclust</span>(<span style="color:#a6e22e">as.dist</span>(dist))
+dfClust        <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(mydat, <span style="color:#a6e22e">cutree</span>(hc, k<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>))
+<span style="color:#a6e22e">names</span>(dfClust) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;event_type&#39;</span>,<span style="color:#e6db74">&#39;cluster&#39;</span>)
+</code></pre></div><p>Displaying the results shows that the first cluster contains very short sequences. There are some
+DUEL events in there and two sequences ending by a goal. The second cluster includes sequences that
+end with a SHOT and are longer sequences.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster1 <span style="color:#f92672">&lt;-</span> dfClust<span style="color:#a6e22e">[which</span>(dfClust<span style="color:#f92672">$</span>cluster <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>),]
+cluster2 <span style="color:#f92672">&lt;-</span> dfClust<span style="color:#a6e22e">[which</span>(dfClust<span style="color:#f92672">$</span>cluster <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>),]
+
+counts1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">table</span>(cluster1<span style="color:#f92672">$</span>event_type))
+counts2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">table</span>(cluster2<span style="color:#f92672">$</span>event_type))
+
+<span style="color:#a6e22e">kable</span>(counts1)
+</code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Var1</th>
+<th style="text-align:right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BALL_CLAIMING DUEL PASS SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">DUEL PASS DUEL SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">DUEL PASS SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">DUEL PASS SHOT GOAL</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">DUEL SHOT GOAL</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS PASS SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS SHOT GOAL</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">SHOT DUEL BALL_CLAIMING</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">DUEL SHOT</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS DUEL SHOT</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS SHOT</td>
+<td style="text-align:right">7</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">kable</span>(counts2)
+</code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Var1</th>
+<th style="text-align:right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DUEL PASS PASS DUEL PASS PASS PASS SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">DUEL PASS PASS PASS PASS DUEL DUEL PASS SHOT DUEL</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">DUEL PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS DUEL SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS PASS PASS DUEL PASS PASS PASS DUEL SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS PASS PASS DUEL SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS PASS PASS PASS DUEL SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS PASS PASS PASS PASS DUEL DUEL PASS PASS SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS PASS PASS PASS PASS PASS PASS SHOT</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">SHOT GOAL</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:left">PASS PASS PASS SHOT</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:left">SHOT</td>
+<td style="text-align:right">9</td>
+</tr>
+</tbody>
+</table>
+<h1 id="summary">Summary</h1>
+<p>Here i just play around with the possibility of cluster strings. According to the event data it
+could be useful to do that with attacking sequences of a whole season and then analyse the sequences
+by club.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2021-04-26-changepoint/">Change Point Detection</a></h4>
+    <h5>April 26, 2021</h5>
+    
+<a href="https://christian43.github.io/tags/r"><kbd class="item-tag">R</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted"><a href="/impressum">Impressum</a> | <a href="/datenschutz">Datenschutz</a> | © All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p> </footer> 
+
+        
+    </body>
+
+</html>
+
+

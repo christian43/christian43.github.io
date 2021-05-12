@@ -1,0 +1,106 @@
+
+---
+title: Cluster Strings 
+author: Christian Saal
+date: '`r Sys.Date()`'
+slug: []
+categories: []
+tags: [R]
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dpi=300)
+knitr::opts_knit$set(global.par = TRUE)
+```
+
+
+# Distance between strings
+
+> Edit distance, also called Levensthein distance, is a measure of the number of primary edits that
+> would need to be made to transform one string into another.
+> -- <cite>[Jack Davies][1]</cite>
+
+[1]: https://www.r-bloggers.com/2019/04/natural-language-processing-in-r-edit-distance/
+
+Here is a small example where the function `adist()` from the R Utils package that is part of the R
+Distribution. 
+
+1. we create a vector containing six words
+2. next we calculate the edit distance
+3. then using a hierachical cluster analysis to find similarities
+
+```{r}
+
+s_vec   <- c("alcool","alcohol","alcoholic","brandy","brandie","cachaça")
+dist    <- adist(s_vec)
+hc      <- hclust(as.dist(dist))
+dfClust <- data.frame(s_vec, cutree(hc, k=3))
+
+dfClust
+
+```
+
+# Give it a try with soccer data
+
+The data is extracted from eventdata. I subset all episodes or sequences that ends with a SHOT or a
+GOAL and sample a small amount of them. Now i can use these attacking sequences to run a cluster analysis.
+
+```{r, include=FALSE}
+
+setwd("~/Desktop/Shortsave/webseite/content/post/2021-05-07-levenshtein/")
+load("data/sample.Rdata")
+library(stringdist)
+
+```
+
+First we inspect the data in a short way.
+
+1. show me the first six vectors of strings
+2. there are 40 sequences within the dataset 
+3. 22 of them are unique, that means there are duplicates in there
+
+```{r}
+
+# inspect data
+head(mydat)
+length(mydat)
+length(unique(mydat))
+
+```
+
+Next i create a distance matrix. Here i used the package stringdist. In this package we have the
+option to choose several distance metrics as describes in `help("stringdist-metrics")`. Here i choose
+the Jaro-Winkler distance. 
+
+```{r}
+
+dist           <- stringdistmatrix(mydat, method="jw")
+hc             <- hclust(as.dist(dist))
+dfClust        <- data.frame(mydat, cutree(hc, k=2))
+names(dfClust) <- c('event_type','cluster')
+
+```
+
+Displaying the results shows that the first cluster contains very short sequences. There are some
+DUEL events in there and two sequences ending by a goal. The second cluster includes sequences that
+end with a SHOT and are longer sequences.  
+
+```{r}
+
+cluster1 <- dfClust[which(dfClust$cluster == 1),]
+cluster2 <- dfClust[which(dfClust$cluster == 2),]
+
+counts1 <- sort(table(cluster1$event_type))
+counts2 <- sort(table(cluster2$event_type))
+
+kable(counts1)
+kable(counts2)
+
+```
+
+# Summary
+
+Here i just play around with the possibility of cluster strings. According to the event data it
+could be useful to do that with attacking sequences of a whole season and then analyse the sequences
+by club. 
