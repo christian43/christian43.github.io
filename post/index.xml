@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interpretation of statistical models by using DALEX</title>
+      <link>https://christian43.github.io/post/2021-05-26-fifamlr3/</link>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/post/2021-05-26-fifamlr3/</guid>
+      <description>Intro In this post i follow a description on how to use the DALEX package that can help on model interpretation. The full example can be found in the MLR3 book here.
+The authors used the FIFA20 dataset to train a random forest model that predicts the soccer player worth. Subsequently they show how to use DALEX to analyze the model behaviour on a global level and of a single prediction.</description>
+    </item>
+    
     <item>
       <title>Cluster Strings</title>
       <link>https://christian43.github.io/post/2021-05-07-levenshtein/</link>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mlr3 on Christian Saal</title>
+    <link>https://christian43.github.io/tags/mlr3/</link>
+    <description>Recent content in mlr3 on Christian Saal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 03 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/tags/mlr3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interpretation of statistical models by using DALEX</title>
+      <link>https://christian43.github.io/post/2021-05-26-fifamlr3/</link>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/post/2021-05-26-fifamlr3/</guid>
+      <description>Intro In this post i follow a description on how to use the DALEX package that can help on model interpretation. The full example can be found in the MLR3 book here.
+The authors used the FIFA20 dataset to train a random forest model that predicts the soccer player worth. Subsequently they show how to use DALEX to analyze the model behaviour on a global level and of a single prediction.</description>
+    </item>
+    
+  </channel>
+</rss>

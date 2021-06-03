@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Interpretation of statistical models by using DALEX</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #4682B4;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://christian43.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/R.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.83.1" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Interpretation of statistical models by using DALEX</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Start</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:saalchris@googlemail.com"><i class="fas fa-envelope"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/christian43"><i class="fab fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/@saalcs/"><i class="fab fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/christian-saal-27211077/"><i class="fab fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/users/7425115/christian/"><i class="fab fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Interpretation of statistical models by using DALEX</h2>
+        <h5>June 3, 2021</h5>
+        
+<a href="https://christian43.github.io/tags/r"><kbd class="item-tag">R</kbd></a>
+
+<a href="https://christian43.github.io/tags/mlr3"><kbd class="item-tag">mlr3</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2 id="intro">Intro</h2>
+<p>In this post i follow a description on how to use the DALEX package that can
+help on model interpretation. The full example can be found in the MLR3 book
+<a href="https://mlr3book.mlr-org.com/dalex.html">here</a>.</p>
+<p>The authors used the FIFA20 dataset to train a random forest model that predicts
+the soccer player worth. Subsequently they show how to use DALEX to analyze the
+model behaviour on a global level and of a single prediction.</p>
+<h2 id="run-and-interpret-a-statistical-model">Run and interpret a statistical model</h2>
+<h3 id="get-data-and-packages">Get data and packages</h3>
+<p>First of all we to load some packages. Also we need to load the dataset that is included in the
+DALEX package.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;DALEX&#34;</span>)
+<span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;DALEXtra&#34;</span>)
+<span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;mlr3&#34;</span>)
+<span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;mlr3learners&#34;</span>)
+
+<span style="color:#a6e22e">data</span>(fifa)
+</code></pre></div><p>The data is already preprocessed and cleaned. In the DALEX package you will find
+the top 5000 football players available. Each observation, player, is described
+with 42 features. The features <code>nationality</code>, <code>overall</code>, <code>potential</code> and
+<code>wage_eur</code> will be removed before start modelling.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">dim</span>(fifa)
+</code></pre></div><pre><code>[1] 5000   38
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">as.data.frame</span>(<span style="color:#a6e22e">names</span>(fifa))
+</code></pre></div><pre><code>                  names(fifa)
+1                   value_eur
+2                         age
+3                   height_cm
+4                   weight_kg
+5          attacking_crossing
+6         attacking_finishing
+7  attacking_heading_accuracy
+8     attacking_short_passing
+9           attacking_volleys
+10            skill_dribbling
+11                skill_curve
+12          skill_fk_accuracy
+13         skill_long_passing
+14         skill_ball_control
+15      movement_acceleration
+16      movement_sprint_speed
+17           movement_agility
+18         movement_reactions
+19           movement_balance
+20           power_shot_power
+21              power_jumping
+22              power_stamina
+23             power_strength
+24           power_long_shots
+25       mentality_aggression
+26    mentality_interceptions
+27      mentality_positioning
+28           mentality_vision
+29        mentality_penalties
+30        mentality_composure
+31          defending_marking
+32  defending_standing_tackle
+33   defending_sliding_tackle
+34         goalkeeping_diving
+35       goalkeeping_handling
+36        goalkeeping_kicking
+37    goalkeeping_positioning
+38       goalkeeping_reflexes
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa[,<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;nationality&#39;</span>, <span style="color:#e6db74">&#39;overall&#39;</span>, <span style="color:#e6db74">&#39;potential&#39;</span>, <span style="color:#e6db74">&#39;wage_eur&#39;</span>)] <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">NULL</span>
+<span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(fifa))           
+	fifa[,i] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.numeric</span>(fifa[,i])
+
+fifa[1<span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>,][,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>]
+</code></pre></div><pre><code>                  value_eur age height_cm weight_kg attacking_crossing
+L. Messi           95500000  32       170        72                 88
+Cristiano Ronaldo  58500000  34       187        83                 84
+Neymar Jr         105500000  27       175        68                 87
+J. Oblak           77500000  26       188        87                 13
+E. Hazard          90000000  28       175        74                 81
+</code></pre><h3 id="build-a-model-with-the-mlr3-framework">Build a model with the mlr3 framework</h3>
+<p>First we create a regression task with setting the variable to be explained as <code>value_eur</code>. After
+that we have to select a learner, here <code>regr.ranger</code>, that should be trained on the task. Keep in
+mind that mlr3 provides many different learners and these learners can used in a benchmark grid for
+model comparison. Here i followed simply the description from their website. They do not
+use a cross-validation-instead, they run the model with the full dataset.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa_task <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as_task_regr</span>(fifa, target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value_eur&#34;</span>)
+
+fifa_ranger <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lrn</span>(<span style="color:#e6db74">&#34;regr.ranger&#34;</span>)
+fifa_ranger<span style="color:#f92672">$</span>param_set<span style="color:#f92672">$</span>values <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(num.trees <span style="color:#f92672">=</span><span style="color:#ae81ff">250</span>)
+fifa_ranger<span style="color:#f92672">$</span><span style="color:#a6e22e">train</span>(fifa_task)
+
+fifa_ranger
+</code></pre></div><pre><code>&lt;LearnerRegrRanger:regr.ranger&gt;
+* Model: ranger
+* Parameters: num.trees=250
+* Packages: ranger
+* Predict Type: response
+* Feature types: logical, integer, numeric, character, factor, ordered
+* Properties: importance, oob_error, weights
+</code></pre><h3 id="use-dalex-to-analyze-the-model">Use DALEX to analyze the model</h3>
+<p>Now we have a model object called <code>fifa_ranger</code>. With the following lines we create a new explainer.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ranger_exp <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">explain_mlr3</span>(fifa_ranger,
+		data <span style="color:#f92672">=</span> fifa,
+		y <span style="color:#f92672">=</span> fifa<span style="color:#f92672">$</span>value_eur,
+		label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Ranger RF&#34;</span>,
+		colorize <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>,
+		verbode <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
+</code></pre></div><pre><code>Preparation of a new explainer is initiated
+  -&gt; model label       :  Ranger RF 
+  -&gt; data              :  5000  rows  38  cols 
+  -&gt; target variable   :  5000  values 
+  -&gt; predict function  :  yhat.LearnerRegr  will be used (  default  )
+  -&gt; predicted values  :  numerical, min =  432295.7 , mean =  7472161 , max =  89463733  
+  -&gt; model_info        :  package mlr3 , ver. 0.8.0 , task regression (  default  ) 
+  -&gt; residual function :  difference between y and yhat (  default  )
+  -&gt; residuals         :  numerical, min =  -8771073 , mean =  1125.943 , max =  17545100  
+  A new explainer has been created!  
+</code></pre><h4 id="global-level">Global level</h4>
+<p>The function <code>model_parts</code> is used to calculate the importance of variables in the model. There ist
+also the possibility to visualize the results. Here we see that the variable <code>movement_reactions</code>
+and <code>skill_ball_control</code> are the most important variables.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa_vi <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model_parts</span>(ranger_exp)
+<span style="color:#a6e22e">head</span>(fifa_vi)
+</code></pre></div><pre><code>             variable mean_dropout_loss     label
+1        _full_model_           1323096 Ranger RF
+2           value_eur           1323096 Ranger RF
+3           weight_kg           1382466 Ranger RF
+4    movement_balance           1387662 Ranger RF
+5           height_cm           1392005 Ranger RF
+6 goalkeeping_kicking           1392349 Ranger RF
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">plot</span>(fifa_vi, max_vars <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>, show_boxplots <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
+</code></pre></div><p><img src="figure/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"></p>
+<p>Once we have identify the most important variables, we can use them to show how the model changes
+when changing the variables. In general we see, suprisingly, that higher skills are related with
+player´s worth. Except the variable <code>age</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">selected_variables <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;age&#34;</span>,
+						<span style="color:#e6db74">&#34;movement_reactions&#34;</span>,
+						<span style="color:#e6db74">&#34;skill_ball_control&#34;</span>,
+						<span style="color:#e6db74">&#34;skill_dribbling&#34;</span>)
+fifa_pd <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model_profile</span>(ranger_exp,
+				variables <span style="color:#f92672">=</span> selected_variables)<span style="color:#f92672">$</span>agr_profiles
+fifa_pd
+</code></pre></div><pre><code>Top profiles    : 
+             _vname_   _label_ _x_  _yhat_ _ids_
+1 skill_ball_control Ranger RF   5 6132546     0
+2    skill_dribbling Ranger RF   7 6380134     0
+3    skill_dribbling Ranger RF  11 6373901     0
+4    skill_dribbling Ranger RF  12 6371453     0
+5    skill_dribbling Ranger RF  13 6370653     0
+6    skill_dribbling Ranger RF  14 6370721     0
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">plot</span>(fifa_pd) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">scale_y_continuous</span>(<span style="color:#e6db74">&#34;Estimated value in Euro&#34;</span>, 
+		labels <span style="color:#f92672">=</span> scales<span style="color:#f92672">::</span><span style="color:#a6e22e">dollar_format</span>(suffix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;€&#34;</span>, prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">ggtitle</span>(<span style="color:#e6db74">&#34;Partial Dependence profiles for selected variables&#34;</span>)
+</code></pre></div><p><img src="figure/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"></p>
+<h4 id="single-prediction">Single prediction</h4>
+<p>We also can analyze how the model behaves for a single prediction. Here i used the player Cristiano
+Ronaldo. The function <code>predict_parts</code> is here our friend. To inspect the local behaviour of the
+model we use the SHAPLEY approach.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ronaldo <span style="color:#f92672">&lt;-</span> fifa[<span style="color:#e6db74">&#34;Cristiano Ronaldo&#34;</span>,] 
+ronaldo_shap_ranger <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">predict_parts</span>(ranger_exp,
+						new_observation <span style="color:#f92672">=</span> ronaldo,
+						type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;shap&#34;</span>)
+<span style="color:#a6e22e">plot</span>(ronaldo_shap_ranger) <span style="color:#f92672">+</span>
+	<span style="color:#a6e22e">scale_y_continuous</span>(<span style="color:#e6db74">&#34;Estimated value in Euro&#34;</span>, labels <span style="color:#f92672">=</span>
+	scales<span style="color:#f92672">::</span><span style="color:#a6e22e">dollar_format</span>(suffix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;€&#34;</span>, prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>))
+</code></pre></div><p><img src="figure/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"></p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>First of all MLR3 is a great package with a lot of features. I am really excited if a keras learner
+implementation will be ready. The full dataset of the EA Sports Game FIFA2020 is available on
+Kaggle. As a sport scientist i think it is worth to analyze this data in depth.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2021-05-07-levenshtein/">Cluster Strings</a></h4>
+    <h5>May 12, 2021</h5>
+    
+<a href="https://christian43.github.io/tags/r"><kbd class="item-tag">R</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2021-04-26-changepoint/">Change Point Detection</a></h4>
+    <h5>April 26, 2021</h5>
+    
+<a href="https://christian43.github.io/tags/r"><kbd class="item-tag">R</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted"><a href="/impressum">Impressum</a> | <a href="/datenschutz">Datenschutz</a> | © All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p> </footer> 
+
+        
+    </body>
+
+</html>
+
+

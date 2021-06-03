@@ -1,0 +1,165 @@
+
+---
+title: Interpretation of statistical models by using DALEX 
+author: Christian Saal
+date: '`r Sys.Date()`'
+slug: []
+categories: []
+tags: [R, mlr3]
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dpi=300, cache = TRUE, comment = NA)
+knitr::opts_knit$set(global.par = TRUE)
+
+setwd("~/Desktop/Shortsave/webseite/content/post/2021-05-26-fifaMLR3/")
+
+```
+
+## Intro
+
+In this post i follow a description on how to use the DALEX package that can
+help on model interpretation. The full example can be found in the MLR3 book
+[here](https://mlr3book.mlr-org.com/dalex.html).
+
+The authors used the FIFA20 dataset to train a random forest model that predicts
+the soccer player worth. Subsequently they show how to use DALEX to analyze the
+model behaviour on a global level and of a single prediction.
+
+
+## Run and interpret a statistical model
+
+### Get data and packages
+
+First of all we to load some packages. Also we need to load the dataset that is included in the
+DALEX package.
+
+
+
+```{r}
+
+library("DALEX")
+library("DALEXtra")
+library("mlr3")
+library("mlr3learners")
+
+data(fifa)
+
+```
+
+
+The data is already preprocessed and cleaned. In the DALEX package you will find
+the top 5000 football players available. Each observation, player, is described
+with 42 features. The features `nationality`, `overall`, `potential` and
+`wage_eur` will be removed before start modelling.
+
+
+```{r inspect }
+dim(fifa)
+as.data.frame(names(fifa))
+
+fifa[,c('nationality', 'overall', 'potential', 'wage_eur')] <- NULL
+for (i in 1:ncol(fifa))           
+	fifa[,i] <- as.numeric(fifa[,i])
+
+fifa[1:5,][,1:5]
+```
+
+### Build a model with the mlr3 framework
+
+
+First we create a regression task with setting the variable to be explained as `value_eur`. After
+that we have to select a learner, here `regr.ranger`, that should be trained on the task. Keep in
+mind that mlr3 provides many different learners and these learners can used in a benchmark grid for
+model comparison. Here i followed simply the description from their website. They do not
+use a cross-validation-instead, they run the model with the full dataset.
+
+```{r}
+
+fifa_task <- as_task_regr(fifa, target = "value_eur")
+
+fifa_ranger <- lrn("regr.ranger")
+fifa_ranger$param_set$values <- list(num.trees =250)
+fifa_ranger$train(fifa_task)
+
+fifa_ranger
+
+```
+
+### Use DALEX to analyze the model
+
+Now we have a model object called `fifa_ranger`. With the following lines we create a new explainer. 
+
+```{r}
+
+ 
+ranger_exp <-explain_mlr3(fifa_ranger,
+		data = fifa,
+		y = fifa$value_eur,
+		label = "Ranger RF",
+		colorize = FALSE,
+		verbode = FALSE)
+
+```
+
+#### Global level
+
+The function `model_parts` is used to calculate the importance of variables in the model. There ist
+also the possibility to visualize the results. Here we see that the variable `movement_reactions`
+and `skill_ball_control` are the most important variables. 
+
+
+```{r}
+ 
+fifa_vi <- model_parts(ranger_exp)
+head(fifa_vi)
+
+plot(fifa_vi, max_vars = 12, show_boxplots = FALSE)
+
+```
+
+Once we have identify the most important variables, we can use them to show how the model changes
+when changing the variables. In general we see, suprisingly, that higher skills are related with
+player´s worth. Except the variable `age`.
+
+```{r}
+ 
+selected_variables <- c("age",
+						"movement_reactions",
+						"skill_ball_control",
+						"skill_dribbling")
+fifa_pd <- model_profile(ranger_exp,
+				variables = selected_variables)$agr_profiles
+fifa_pd
+plot(fifa_pd) +
+  scale_y_continuous("Estimated value in Euro", 
+		labels = scales::dollar_format(suffix = "€", prefix = "")) +
+  ggtitle("Partial Dependence profiles for selected variables")
+
+```
+
+#### Single prediction
+
+We also can analyze how the model behaves for a single prediction. Here i used the player Cristiano
+Ronaldo. The function `predict_parts` is here our friend. To inspect the local behaviour of the
+model we use the SHAPLEY approach.
+
+```{r}
+
+ronaldo <- fifa["Cristiano Ronaldo",] 
+ronaldo_shap_ranger <- predict_parts(ranger_exp,
+						new_observation = ronaldo,
+						type = "shap")
+plot(ronaldo_shap_ranger) +
+	scale_y_continuous("Estimated value in Euro", labels =
+	scales::dollar_format(suffix = "€", prefix = ""))
+
+```
+
+
+## Final thoughts
+
+First of all MLR3 is a great package with a lot of features. I am really excited if a keras learner
+implementation will be ready. The full dataset of the EA Sports Game FIFA2020 is available on
+Kaggle. As a sport scientist i think it is worth to analyze this data in depth. 
