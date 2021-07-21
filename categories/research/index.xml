@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Research on Christian Saal</title>
+    <link>https://christian43.github.io/categories/research/</link>
+    <description>Recent content in Research on Christian Saal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Jul 2021 09:18:30 +0200</lastBuildDate><atom:link href="https://christian43.github.io/categories/research/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Footbonaut</title>
+      <link>https://christian43.github.io/project/footbonaut/</link>
+      <pubDate>Fri, 09 Jul 2021 09:18:30 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/project/footbonaut/</guid>
+      <description>Introduction In professional soccer a constant development of innovative diagnostic systems can be observed. A result of this development is the Footbonaut, which can be used to quantify the speed and accuracy of short passing actions in soccer.
+Method In my thesis a Footbonaut testing procedure (FSPT Footbonaut Short Passing Test) is presented and analyzed if fulfilling the criteria for test quality. First a cross-sectional study is used in a pre-post test design to answer questions on item quality, group differences and the effects of repeated measurements on speed and accuracy.</description>
+    </item>
+    
+  </channel>
+</rss>
