@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.85.0" />
+ <meta name="generator" content="Hugo 0.87.0" />
         
 
         
@@ -142,7 +142,7 @@ model behaviour on a global level and of a single prediction.</p>
 <h3 id="get-data-and-packages">Get data and packages</h3>
 <p>First of all we to load some packages. Also we need to load the dataset that is included in the
 DALEX package.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;DALEX&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;DALEX&#34;</span>)
 <span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;DALEXtra&#34;</span>)
 <span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;mlr3&#34;</span>)
 <span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;mlr3learners&#34;</span>)
@@ -152,9 +152,9 @@ DALEX package.</p>
 the top 5000 football players available. Each observation, player, is described
 with 42 features. The features <code>nationality</code>, <code>overall</code>, <code>potential</code> and
 <code>wage_eur</code> will be removed before start modelling.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">dim</span>(fifa)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">dim</span>(fifa)
 </code></pre></div><pre><code>[1] 5000   38
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">as.data.frame</span>(<span style="color:#a6e22e">names</span>(fifa))
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">as.data.frame</span>(<span style="color:#a6e22e">names</span>(fifa))
 </code></pre></div><pre><code>                  names(fifa)
 1                   value_eur
 2                         age
@@ -194,7 +194,7 @@ with 42 features. The features <code>nationality</code>, <code>overall</code>, <
 36        goalkeeping_kicking
 37    goalkeeping_positioning
 38       goalkeeping_reflexes
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa[,<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;nationality&#39;</span>, <span style="color:#e6db74">&#39;overall&#39;</span>, <span style="color:#e6db74">&#39;potential&#39;</span>, <span style="color:#e6db74">&#39;wage_eur&#39;</span>)] <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">NULL</span>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa[,<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;nationality&#39;</span>, <span style="color:#e6db74">&#39;overall&#39;</span>, <span style="color:#e6db74">&#39;potential&#39;</span>, <span style="color:#e6db74">&#39;wage_eur&#39;</span>)] <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">NULL</span>
 <span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(fifa))           
 	fifa[,i] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.numeric</span>(fifa[,i])
 
@@ -211,7 +211,7 @@ that we have to select a learner, here <code>regr.ranger</code>, that should be 
 mind that mlr3 provides many different learners and these learners can used in a benchmark grid for
 model comparison. Here i followed simply the description from their website. They do not
 use a cross-validation-instead, they run the model with the full dataset.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa_task <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as_task_regr</span>(fifa, target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value_eur&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa_task <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as_task_regr</span>(fifa, target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value_eur&#34;</span>)
 
 fifa_ranger <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lrn</span>(<span style="color:#e6db74">&#34;regr.ranger&#34;</span>)
 fifa_ranger<span style="color:#f92672">$</span>param_set<span style="color:#f92672">$</span>values <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(num.trees <span style="color:#f92672">=</span><span style="color:#ae81ff">250</span>)
@@ -227,7 +227,7 @@ fifa_ranger
 * Properties: importance, oob_error, weights
 </code></pre><h3 id="use-dalex-to-analyze-the-model">Use DALEX to analyze the model</h3>
 <p>Now we have a model object called <code>fifa_ranger</code>. With the following lines we create a new explainer.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ranger_exp <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">explain_mlr3</span>(fifa_ranger,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ranger_exp <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">explain_mlr3</span>(fifa_ranger,
 		data <span style="color:#f92672">=</span> fifa,
 		y <span style="color:#f92672">=</span> fifa<span style="color:#f92672">$</span>value_eur,
 		label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Ranger RF&#34;</span>,
@@ -247,7 +247,7 @@ fifa_ranger
 <p>The function <code>model_parts</code> is used to calculate the importance of variables in the model. There ist
 also the possibility to visualize the results. Here we see that the variable <code>movement_reactions</code>
 and <code>skill_ball_control</code> are the most important variables.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa_vi <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model_parts</span>(ranger_exp)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa_vi <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model_parts</span>(ranger_exp)
 <span style="color:#a6e22e">head</span>(fifa_vi)
 </code></pre></div><pre><code>             variable mean_dropout_loss     label
 1        _full_model_           1323096 Ranger RF
@@ -256,12 +256,12 @@ and <code>skill_ball_control</code> are the most important variables.</p>
 4    movement_balance           1387662 Ranger RF
 5           height_cm           1392005 Ranger RF
 6 goalkeeping_kicking           1392349 Ranger RF
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">plot</span>(fifa_vi, max_vars <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>, show_boxplots <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">plot</span>(fifa_vi, max_vars <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>, show_boxplots <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
 </code></pre></div><p><img src="figure/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"></p>
 <p>Once we have identify the most important variables, we can use them to show how the model changes
 when changing the variables. In general we see, suprisingly, that higher skills are related with
 player´s worth. Except the variable <code>age</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">selected_variables <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;age&#34;</span>,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">selected_variables <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;age&#34;</span>,
 						<span style="color:#e6db74">&#34;movement_reactions&#34;</span>,
 						<span style="color:#e6db74">&#34;skill_ball_control&#34;</span>,
 						<span style="color:#e6db74">&#34;skill_dribbling&#34;</span>)
@@ -276,7 +276,7 @@ fifa_pd
 4    skill_dribbling Ranger RF  12 6371453     0
 5    skill_dribbling Ranger RF  13 6370653     0
 6    skill_dribbling Ranger RF  14 6370721     0
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">plot</span>(fifa_pd) <span style="color:#f92672">+</span>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">plot</span>(fifa_pd) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">scale_y_continuous</span>(<span style="color:#e6db74">&#34;Estimated value in Euro&#34;</span>, 
 		labels <span style="color:#f92672">=</span> scales<span style="color:#f92672">::</span><span style="color:#a6e22e">dollar_format</span>(suffix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;€&#34;</span>, prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>)) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">ggtitle</span>(<span style="color:#e6db74">&#34;Partial Dependence profiles for selected variables&#34;</span>)
@@ -285,7 +285,7 @@ fifa_pd
 <p>We also can analyze how the model behaves for a single prediction. Here i used the player Cristiano
 Ronaldo. The function <code>predict_parts</code> is here our friend. To inspect the local behaviour of the
 model we use the SHAPLEY approach.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ronaldo <span style="color:#f92672">&lt;-</span> fifa[<span style="color:#e6db74">&#34;Cristiano Ronaldo&#34;</span>,] 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ronaldo <span style="color:#f92672">&lt;-</span> fifa[<span style="color:#e6db74">&#34;Cristiano Ronaldo&#34;</span>,] 
 ronaldo_shap_ranger <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">predict_parts</span>(ranger_exp,
 						new_observation <span style="color:#f92672">=</span> ronaldo,
 						type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;shap&#34;</span>)
