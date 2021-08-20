@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/tags/imagemagick/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Image to Sketch</title>
-      <link>https://christian43.github.io/post/2021-09-20-imagemagick/2021-09-20-imagemagick/</link>
+      <link>https://christian43.github.io/post/2021-08-20-imagemagick/2021-09-20-imagemagick/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://christian43.github.io/post/2021-09-20-imagemagick/2021-09-20-imagemagick/</guid>
+      <guid>https://christian43.github.io/post/2021-08-20-imagemagick/2021-09-20-imagemagick/</guid>
       <description>Intro Sometimes it is just nice to create a sketch from an image. There is from my opinion no other reason then fun on aesthetics.
 Tool There are plenty tools to solve such a task. Apps, browser based version or well known software tool like Gimp or Photoshop. Here i used ImageMagick a really powerfull image editing tool.
 Code At first we will need a picture. Every stands and falls with the picture.</description>
