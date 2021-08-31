@@ -35,15 +35,6 @@
     </item>
     
     <item>
-      <title>Predict Canoe Performance</title>
-      <link>https://christian43.github.io/project/predict_canoe/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://christian43.github.io/project/predict_canoe/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Interpretation of statistical models by using DALEX</title>
       <link>https://christian43.github.io/post/2021-05-26-fifamlr3/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
@@ -71,6 +62,15 @@ The authors used the FIFA20 dataset to train a random forest model that predicts
       <guid>https://christian43.github.io/post/2021-04-26-changepoint/</guid>
       <description>Könnte interessant sein.. In diesem Beitrag zeige ich ganz kurz und knapp wie Segmente innerhalb einer Verlaufskurve detektiert werden können. Verlaufskurven kommen im Sport ja recht häufig vor. Am Beispiel meiner Laufdaten, die von einer Smart Watch aufgezeichnet wurden, zeige ich eine mögliche Vorgehensweise mit R.
 Eine schöne Übersicht über die verschiedenen Vorgehensweisen bietet Saskia Otto auf ihrer Homepage. Etwas ausführlicher beschäftigen sich Burg &amp;amp; Williams (2020) mit den verschiedenen Ansätzen.</description>
+    </item>
+    
+    <item>
+      <title>Predict Canoe Performance</title>
+      <link>https://christian43.github.io/project/predict_canoe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/project/predict_canoe/</guid>
+      <description></description>
     </item>
     
   </channel>
