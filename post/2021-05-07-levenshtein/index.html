@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.87.0" />
+ <meta name="generator" content="Hugo 0.88.1" />
         
 
         
@@ -148,7 +148,7 @@ hc      <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">hcl
 dfClust <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(s_vec, <span style="color:#a6e22e">cutree</span>(hc, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>))
 
 dfClust
-</code></pre></div><pre><code>##       s_vec cutree.hc..k...3.
+</code></pre></div><pre tabindex="0"><code>##       s_vec cutree.hc..k...3.
 ## 1    alcool                 1
 ## 2   alcohol                 1
 ## 3 alcoholic                 1
@@ -166,16 +166,16 @@ GOAL and sample a small amount of them. Now i can use these attacking sequences 
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># inspect data</span>
 <span style="color:#a6e22e">head</span>(mydat)
-</code></pre></div><pre><code>## [1] &quot;DUEL SHOT&quot;                                                                                
+</code></pre></div><pre tabindex="0"><code>## [1] &quot;DUEL SHOT&quot;                                                                                
 ## [2] &quot;SHOT&quot;                                                                                     
 ## [3] &quot;PASS PASS PASS DUEL PASS PASS PASS DUEL SHOT&quot;                                             
 ## [4] &quot;PASS SHOT&quot;                                                                                
 ## [5] &quot;DUEL PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS DUEL SHOT&quot;
 ## [6] &quot;DUEL PASS PASS PASS PASS DUEL DUEL PASS SHOT DUEL&quot;
 </code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">length</span>(mydat)
-</code></pre></div><pre><code>## [1] 40
+</code></pre></div><pre tabindex="0"><code>## [1] 40
 </code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">length</span>(<span style="color:#a6e22e">unique</span>(mydat))
-</code></pre></div><pre><code>## [1] 22
+</code></pre></div><pre tabindex="0"><code>## [1] 22
 </code></pre><p>Next i create a distance matrix. Here i used the package stringdist. In this package we have the
 option to choose several distance metrics as describes in <code>help(&quot;stringdist-metrics&quot;)</code>. Here i choose
 the Jaro-Winkler distance.</p>

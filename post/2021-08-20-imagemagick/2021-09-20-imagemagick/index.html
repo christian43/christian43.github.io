@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.87.0" />
+ <meta name="generator" content="Hugo 0.88.1" />
         
 
         
@@ -140,7 +140,7 @@ editing tool.</p>
 <h1 id="code">Code</h1>
 <p>At first we will need a picture. Every stands and falls with the picture. Not
 all images are suitable to create a sketch. Second a few lines of code.</p>
-<pre><code>convert image.jpg -intensity Rec709luminance -colorspace gray \
+<pre tabindex="0"><code>convert image.jpg -intensity Rec709luminance -colorspace gray \
           \( +clone -blur 0x2 \) +swap -compose divide -composite \
 		            -linear-stretch 5%x80%   image_sketch.png
 </code></pre><p><img src="/sketch/tiger.png" alt="Tiger" title="Tiger">

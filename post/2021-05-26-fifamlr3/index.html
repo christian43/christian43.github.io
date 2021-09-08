@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.87.0" />
+ <meta name="generator" content="Hugo 0.88.1" />
         
 
         
@@ -153,9 +153,9 @@ the top 5000 football players available. Each observation, player, is described
 with 42 features. The features <code>nationality</code>, <code>overall</code>, <code>potential</code> and
 <code>wage_eur</code> will be removed before start modelling.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">dim</span>(fifa)
-</code></pre></div><pre><code>[1] 5000   38
+</code></pre></div><pre tabindex="0"><code>[1] 5000   38
 </code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">as.data.frame</span>(<span style="color:#a6e22e">names</span>(fifa))
-</code></pre></div><pre><code>                  names(fifa)
+</code></pre></div><pre tabindex="0"><code>                  names(fifa)
 1                   value_eur
 2                         age
 3                   height_cm
@@ -199,7 +199,7 @@ with 42 features. The features <code>nationality</code>, <code>overall</code>, <
 	fifa[,i] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.numeric</span>(fifa[,i])
 
 fifa[1<span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>,][,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>]
-</code></pre></div><pre><code>                  value_eur age height_cm weight_kg attacking_crossing
+</code></pre></div><pre tabindex="0"><code>                  value_eur age height_cm weight_kg attacking_crossing
 L. Messi           95500000  32       170        72                 88
 Cristiano Ronaldo  58500000  34       187        83                 84
 Neymar Jr         105500000  27       175        68                 87
@@ -218,7 +218,7 @@ fifa_ranger<span style="color:#f92672">$</span>param_set<span style="color:#f926
 fifa_ranger<span style="color:#f92672">$</span><span style="color:#a6e22e">train</span>(fifa_task)
 
 fifa_ranger
-</code></pre></div><pre><code>&lt;LearnerRegrRanger:regr.ranger&gt;
+</code></pre></div><pre tabindex="0"><code>&lt;LearnerRegrRanger:regr.ranger&gt;
 * Model: ranger
 * Parameters: num.trees=250
 * Packages: ranger
@@ -233,7 +233,7 @@ fifa_ranger
 		label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Ranger RF&#34;</span>,
 		colorize <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>,
 		verbode <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
-</code></pre></div><pre><code>Preparation of a new explainer is initiated
+</code></pre></div><pre tabindex="0"><code>Preparation of a new explainer is initiated
   -&gt; model label       :  Ranger RF 
   -&gt; data              :  5000  rows  38  cols 
   -&gt; target variable   :  5000  values 
@@ -249,7 +249,7 @@ also the possibility to visualize the results. Here we see that the variable <co
 and <code>skill_ball_control</code> are the most important variables.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fifa_vi <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model_parts</span>(ranger_exp)
 <span style="color:#a6e22e">head</span>(fifa_vi)
-</code></pre></div><pre><code>             variable mean_dropout_loss     label
+</code></pre></div><pre tabindex="0"><code>             variable mean_dropout_loss     label
 1        _full_model_           1323096 Ranger RF
 2           value_eur           1323096 Ranger RF
 3           weight_kg           1382466 Ranger RF
@@ -268,7 +268,7 @@ player´s worth. Except the variable <code>age</code>.</p>
 fifa_pd <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model_profile</span>(ranger_exp,
 				variables <span style="color:#f92672">=</span> selected_variables)<span style="color:#f92672">$</span>agr_profiles
 fifa_pd
-</code></pre></div><pre><code>Top profiles    : 
+</code></pre></div><pre tabindex="0"><code>Top profiles    : 
              _vname_   _label_ _x_  _yhat_ _ids_
 1 skill_ball_control Ranger RF   5 6132546     0
 2    skill_dribbling Ranger RF   7 6380134     0

@@ -6,7 +6,17 @@
     <description>Recent content in LaTeX on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Jul 2021 09:18:30 +0200</lastBuildDate><atom:link href="https://christian43.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Sep 2021 10:52:30 +0200</lastBuildDate><atom:link href="https://christian43.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating a contact info QR code with LaTeX</title>
+      <link>https://christian43.github.io/post/2021-09-08-qrcode/2021-09-08-qrcode/</link>
+      <pubDate>Wed, 08 Sep 2021 10:52:30 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/post/2021-09-08-qrcode/2021-09-08-qrcode/</guid>
+      <description>QR Codes QR Codes are two dimensional &amp;ldquo;Quick Response Codes&amp;rdquo; presented first in the year 1994 by a japanese company. Nowadays QR Codes are widely used and a very effective way to transport short informations.
+LaTeX offers a package called pst-barcode which can be used to generate several different barcodes. Here i tried to create a Vcard. Unfortunately the Vcard convention is somewhat strange in the behaviour. So sometimes android phones stick with that generated qr code.</description>
+    </item>
+    
     <item>
       <title>Serial documents with LaTeX</title>
       <link>https://christian43.github.io/post/2021-07-09-serialletter/2021-07-09-serialletter/</link>
