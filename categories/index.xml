@@ -5,7 +5,26 @@
     <link>https://christian43.github.io/categories/</link>
     <description>Recent content in Categories on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://christian43.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Oct 2021 15:05:50 +0200</lastBuildDate><atom:link href="https://christian43.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>R</title>
+      <link>https://christian43.github.io/categories/r/</link>
+      <pubDate>Fri, 29 Oct 2021 15:05:50 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://christian43.github.io/categories/vim/</link>
+      <pubDate>Fri, 29 Oct 2021 15:05:50 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/categories/vim/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Research</title>
       <link>https://christian43.github.io/categories/research/</link>

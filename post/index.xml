@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Sep 2021 10:52:30 +0200</lastBuildDate><atom:link href="https://christian43.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Oct 2021 15:05:50 +0200</lastBuildDate><atom:link href="https://christian43.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using R and Vim together</title>
+      <link>https://christian43.github.io/post/2021-10-29-vim/vim-slime/</link>
+      <pubDate>Fri, 29 Oct 2021 15:05:50 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/post/2021-10-29-vim/vim-slime/</guid>
+      <description>Turn Vim into an R IDE Since a while i use vim and R together and i am very happy with that solution. In this post i just want tell how it works.
+What is an IDE IDE is the abbreviation for &amp;ldquo;integrated development environment&amp;rdquo;. Simply spoken it is a working environment to solve coding tasks. A full explanation gives for example Wikipedia. Why i do not use R Studio? Hmmm, well i started to use vim and have gotten used to it.</description>
+    </item>
+    
     <item>
       <title>Creating a contact info QR code with LaTeX</title>
       <link>https://christian43.github.io/post/2021-09-08-qrcode/2021-09-08-qrcode/</link>
