@@ -59,8 +59,8 @@ Method In my thesis a Footbonaut testing procedure (FSPT Footbonaut Short Passin
       <pubDate>Fri, 29 Oct 2021 15:05:50 +0200</pubDate>
       
       <guid>https://christian43.github.io/post/2021-10-29-vim/vim-slime/</guid>
-      <description>Turn Vim into an R IDE Since a while i use vim and R together and i am very happy with that solution. In this post i just want tell how it works.
-What is an IDE IDE is the abbreviation for &amp;ldquo;integrated development environment&amp;rdquo;. Simply spoken it is a working environment to solve coding tasks. A full explanation gives for example Wikipedia. Why i do not use R Studio? Hmmm, well i started to use vim and have gotten used to it.</description>
+      <description>Turn Vim into an R IDE For some time I have been useing vim and R together and I am very happy with that solution. In this post I just want to describe how it works.
+What is an IDE IDE is the abbreviation for &amp;ldquo;integrated development environment&amp;rdquo;. To keep it simple IDE is a working environment to solve coding tasks. On Wikipedia you can find a full explanation. Why don&amp;rsquo;t I use R Studio?</description>
     </item>
     
     <item>
