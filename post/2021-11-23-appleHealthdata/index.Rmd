@@ -4,14 +4,14 @@ title: Explore Apple Health Data
 author: Christian Saal
 date: '`r Sys.Date()`'
 slug: []
-categories: [blog]
+categories: []
 tags: [R]
 draft: false
 ---
 
 ```{r setup, include=FALSE}
 
-knitr::opts_chunk$set(dpi=300, cache = TRUE, comment = NA)
+knitr::opts_chunk$set(dpi=300, cache = FALSE, comment = NA)
 knitr::opts_knit$set(global.par = TRUE)
 
 setwd("~/Desktop/shortsave/webseite/content/post/2021-11-23-appleHealthdata/")
