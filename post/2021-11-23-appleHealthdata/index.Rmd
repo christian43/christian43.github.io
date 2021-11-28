@@ -6,7 +6,7 @@ date: '`r Sys.Date()`'
 slug: []
 categories: [blog]
 tags: [R]
-draft: FALSE
+draft: false
 ---
 
 ```{r setup, include=FALSE}
