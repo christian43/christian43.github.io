@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Using R and Vim together</title>
+        <title>Explore Apple Health Data</title>
         
         <style>
 
@@ -77,7 +77,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Using R and Vim together</a>
+                    <a class="navbar-brand visible-xs" href="#">Explore Apple Health Data</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -121,45 +121,73 @@
 <main>
 
     <div>
-        <h2>Using R and Vim together</h2>
-        <h5>October 29, 2021</h5>
+        <h2>Explore Apple Health Data</h2>
+        <h5>November 28, 2021</h5>
         
-<a href="https://christian43.github.io/tags/vim"><kbd class="item-tag">Vim</kbd></a>
-
 <a href="https://christian43.github.io/tags/r"><kbd class="item-tag">R</kbd></a>
 
 
     </div>
 
-    <div align="start" class="content"><p><img src="/slime/slime.gif" alt=""></p>
-<h3 id="turn-vim-into-an-r-ide">Turn Vim into an R IDE</h3>
-<p>For some time I have been useing vim and R together and I am very
-happy with that solution. In this post I just want to describe how it
-works.</p>
-<h3 id="what-is-an-ide">What is an IDE</h3>
-<p>IDE is the abbreviation for &ldquo;integrated development environment&rdquo;. To
-keep it simple IDE is a working environment to solve coding tasks. On
-<a href="https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung">Wikipedia</a> you can find a full explanation. Why don&rsquo;t I use R Studio? Hmmm,
-well I started to use vim and have gotten used to it.</p>
-<h3 id="what-do-you-need">What do you need?</h3>
-<ol>
-<li>Command-line, Terminal or Shell</li>
-<li>Vim</li>
-<li>R</li>
-<li>Tmux</li>
-<li>vim-slime</li>
-</ol>
-<h3 id="what-is-vim-slime">What is vim-slime</h3>
-<p>By using vim-slime it is possible to send any text to another tmux pane
-(or even vims <code>:terminal</code>). Or even simplier:</p>
-<blockquote>
-<p>Grab some text and send it to a target&hellip;</p>
-</blockquote>
-<p>Visit the <a href="https://github.com/jpalardy/vim-slime#vim-terminal">github repository</a> from
-Jonathan Parlady and find out more about vim-slime.</p>
-<h3 id="summary">Summary</h3>
-<p>This is a great plug-in for vim because you can use it for all other programming
-languages as well, e.g. Julia, Octave, Image Magick and much more.</p>
+    <div align="start" class="content"><h2 id="introduction">Introduction</h2>
+<p>As a sport scientist some times it is useful to operate with heart rate data. Your Apple Watch can
+detect you heart rate via an optical heart sensor <a href="https://support.apple.com/en-us/HT204666">Apple
+Support</a>. Your data is stored locally on your device. The
+export can be started very simply via the health app. What you get is an proper xml-file with all
+your data.</p>
+<h2 id="explore-the-xml-file">Explore the xml-file</h2>
+<p>As i am most comfortable with R i started to search the internet for an short description how to
+import my apple health data. I have found these possible solution
+<a href="https://www.ryanpraski.com/apple-health-data-how-to-export-analyze-visualize-guide/">Ryanpraski</a>.
+Also this Page helps me to solve the task <a href="https://jeffjjohnston.github.io/rstudio/rmarkdown/2016/04/28/explore-your-apple-watch-heart-rate-data.html">Jeff&rsquo;s GitHub Pages
+site</a>.</p>
+<h3 id="solution-1-using-package-xml">Solution 1 using Package XML</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#### using XML</span>
+
+<span style="color:#a6e22e">library</span>(XML)
+
+<span style="color:#75715e"># load apple health export.xml file</span>
+xml <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">xmlParse</span>(<span style="color:#e6db74">&#34;Export.xml&#34;</span>) 
+
+<span style="color:#75715e"># transform xml file to data frame - select the Record rows from the xml file</span>
+df <span style="color:#f92672">&lt;-</span> XML<span style="color:#f92672">:::</span><span style="color:#a6e22e">xmlAttrsToDataFrame</span>(xml[<span style="color:#e6db74">&#34;//Record&#34;</span>])
+df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.table</span>(df)
+</code></pre></div><h3 id="solution-2-using-package">Solution 2 using Package</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#### load package</span>
+
+
+<span style="color:#a6e22e">library</span>(xml2)
+<span style="color:#a6e22e">library</span>(data.table)
+
+<span style="color:#75715e">#### read data</span>
+dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_xml</span>(<span style="color:#e6db74">&#34;Export.xml&#34;</span>)
+
+<span style="color:#75715e">#### look at the structure</span>
+<span style="color:#a6e22e">xml_structure</span>(dat)[1]
+
+<span style="color:#75715e">#### fetch data </span>
+dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">xml_children</span>(dat)
+<span style="color:#a6e22e">length</span>(dat)
+
+<span style="color:#75715e">#### check record types</span>
+record_types <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">xml_attr</span>(dat, <span style="color:#e6db74">&#34;type&#34;</span>)
+<span style="color:#a6e22e">table</span>(record_types)
+
+<span style="color:#75715e">#### subset  type</span>
+steps <span style="color:#f92672">&lt;-</span> dat<span style="color:#a6e22e">[which</span>(record_types <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;HKQuantityTypeIdentifierStepCount&#34;</span>)]
+
+<span style="color:#75715e">#### show one entry</span>
+single_record_attrs <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">xml_attrs</span>(steps[10000])[[1]]
+
+<span style="color:#75715e">#### xml to data frame</span>
+df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.table</span>(date<span style="color:#f92672">=</span> <span style="color:#a6e22e">as.POSIXct</span>(<span style="color:#a6e22e">xml_attr</span>(steps, <span style="color:#e6db74">&#34;endDate&#34;</span>)),
+  creationDate <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.POSIXct</span>(<span style="color:#a6e22e">xml_attr</span>(steps, <span style="color:#e6db74">&#34;creationDate&#34;</span>)),
+  startDate <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.POSIXct</span>(<span style="color:#a6e22e">xml_attr</span>(steps, <span style="color:#e6db74">&#34;startDate&#34;</span>)),
+  steps <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.integer</span>(<span style="color:#a6e22e">xml_attr</span>(steps, <span style="color:#e6db74">&#34;value&#34;</span>))
+  )
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Both ways seems to be appropriate to import your apple health data. After that you can start to
+explore visually or numerically your data and do what you want.</p>
 </div>
 
     
@@ -175,9 +203,11 @@ languages as well, e.g. Julia, Octave, Image Magick and much more.</p>
     
     
 
-    <h4><a href="/post/2021-11-23-apple/">Explore Apple Health Data</a></h4>
-    <h5>November 28, 2021</h5>
+    <h4><a href="/post/2021-10-29-vim/vim-slime/">Using R and Vim together</a></h4>
+    <h5>October 29, 2021</h5>
     
+<a href="https://christian43.github.io/tags/vim"><kbd class="item-tag">Vim</kbd></a>
+
 <a href="https://christian43.github.io/tags/r"><kbd class="item-tag">R</kbd></a>
 
 
