@@ -6,7 +6,7 @@
     <description>Recent content on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Oct 2021 15:05:50 +0200</lastBuildDate><atom:link href="https://christian43.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Footbonaut</title>
       <link>https://christian43.github.io/project/footbonaut/</link>
@@ -51,6 +51,16 @@ Method In my thesis a Footbonaut testing procedure (FSPT Footbonaut Short Passin
       
       <guid>https://christian43.github.io/project/predict_canoe/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Explore Apple Health Data</title>
+      <link>https://christian43.github.io/post/2021-11-23-applehealthdata/</link>
+      <pubDate>Sun, 28 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/post/2021-11-23-applehealthdata/</guid>
+      <description>Introduction As a sport scientist some times it is useful to operate with heart rate data. Your Apple Watch can detect you heart rate via an optical heart sensor Apple Support. Your data is stored locally on your device. The export can be started very simply via the health app. What you get is an proper xml-file with all your data.
+Explore the xml-file As i am most comfortable with R i started to search the internet for an short description how to import my apple health data.</description>
     </item>
     
     <item>

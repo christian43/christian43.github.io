@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on Christian Saal</title>
+    <link>https://christian43.github.io/categories/blog/</link>
+    <description>Recent content in blog on Christian Saal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Explore Apple Health Data</title>
+      <link>https://christian43.github.io/post/2021-11-23-applehealthdata/</link>
+      <pubDate>Sun, 28 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/post/2021-11-23-applehealthdata/</guid>
+      <description>Introduction As a sport scientist some times it is useful to operate with heart rate data. Your Apple Watch can detect you heart rate via an optical heart sensor Apple Support. Your data is stored locally on your device. The export can be started very simply via the health app. What you get is an proper xml-file with all your data.
+Explore the xml-file As i am most comfortable with R i started to search the internet for an short description how to import my apple health data.</description>
+    </item>
+    
+  </channel>
+</rss>
