@@ -49,7 +49,7 @@
       <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://christian43.github.io/post/2021-12-20-xmas/</guid>
-      <description># t sin(t) Xmas tree, see https://community.wolfram.com/groups/-/m/t/175891 library(rgl) t &amp;lt;- seq(0, 100, by = 0.7)^0.6 x &amp;lt;- t * c(sin(t), sin(t + pi)) y &amp;lt;- t * c(cos(t), cos(t + pi)) z &amp;lt;- -2 * c(t, t) color &amp;lt;- rep(c(&amp;#34;darkgreen&amp;#34;, &amp;#34;gold&amp;#34;), each = length(t)) #open3d(windowRect = c(100, 100, 600, 600), zoom = 0.9) #bg3d(&amp;#34;black&amp;#34;) #spheres3d(x, y, z, radius = 0.3, color = color) # Export (requires 3rd party tool &amp;#34;ImageMagick&amp;#34; resp.</description>
+      <description>Header </description>
     </item>
     
     <item>
