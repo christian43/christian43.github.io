@@ -17,7 +17,6 @@ knitr::opts_knit$set(global.par = TRUE)
 ```
 
 
-![](/xmas/xmas.gif)
 
 
 ```{r}
