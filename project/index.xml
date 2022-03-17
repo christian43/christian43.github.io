@@ -5,23 +5,13 @@
     <link>https://christian43.github.io/project/</link>
     <description>Recent content in Projects on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 17 Mar 2022 07:39:30 +0200</lastBuildDate><atom:link href="https://christian43.github.io/project/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://christian43.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analyse Kinexon Data</title>
       <link>https://christian43.github.io/project/kinexon_handball/</link>
-      <pubDate>Thu, 17 Mar 2022 07:39:30 +0200</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://christian43.github.io/project/kinexon_handball/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Predict Canoe Performance</title>
-      <link>https://christian43.github.io/project/predict_canoe/</link>
-      <pubDate>Tue, 31 Aug 2021 20:18:30 +0200</pubDate>
-      
-      <guid>https://christian43.github.io/project/predict_canoe/</guid>
       <description></description>
     </item>
     
@@ -33,6 +23,15 @@
       <guid>https://christian43.github.io/project/footbonaut/</guid>
       <description>Introduction In professional soccer a constant development of innovative diagnostic systems can be observed. A result of this development is the Footbonaut, which can be used to quantify the speed and accuracy of short passing actions in soccer.
 Method In my thesis a Footbonaut testing procedure (FSPT Footbonaut Short Passing Test) is presented and analyzed if fulfilling the criteria for test quality. First a cross-sectional study is used in a pre-post test design to answer questions on item quality, group differences and the effects of repeated measurements on speed and accuracy.</description>
+    </item>
+    
+    <item>
+      <title>Predict Canoe Performance</title>
+      <link>https://christian43.github.io/project/predict_canoe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/project/predict_canoe/</guid>
+      <description></description>
     </item>
     
     <item>
