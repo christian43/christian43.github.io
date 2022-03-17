@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.92.1" />
+ <meta name="generator" content="Hugo 0.94.2" />
         
 
         
@@ -142,13 +142,13 @@ Distribution.</p>
 <li>next we calculate the edit distance</li>
 <li>then using a hierachical cluster analysis to find similarities</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">s_vec   <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;alcool&#34;</span>,<span style="color:#e6db74">&#34;alcohol&#34;</span>,<span style="color:#e6db74">&#34;alcoholic&#34;</span>,<span style="color:#e6db74">&#34;brandy&#34;</span>,<span style="color:#e6db74">&#34;brandie&#34;</span>,<span style="color:#e6db74">&#34;cachaça&#34;</span>)
-dist    <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">adist</span>(s_vec)
-hc      <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">hclust</span>(<span style="color:#a6e22e">as.dist</span>(dist))
-dfClust <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(s_vec, <span style="color:#a6e22e">cutree</span>(hc, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>))
-
-dfClust
-</code></pre></div><pre tabindex="0"><code>##       s_vec cutree.hc..k...3.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>s_vec   <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;alcool&#34;</span>,<span style="color:#e6db74">&#34;alcohol&#34;</span>,<span style="color:#e6db74">&#34;alcoholic&#34;</span>,<span style="color:#e6db74">&#34;brandy&#34;</span>,<span style="color:#e6db74">&#34;brandie&#34;</span>,<span style="color:#e6db74">&#34;cachaça&#34;</span>)
+</span></span><span style="display:flex;"><span>dist    <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">adist</span>(s_vec)
+</span></span><span style="display:flex;"><span>hc      <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">hclust</span>(<span style="color:#a6e22e">as.dist</span>(dist))
+</span></span><span style="display:flex;"><span>dfClust <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(s_vec, <span style="color:#a6e22e">cutree</span>(hc, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dfClust
+</span></span></code></pre></div><pre tabindex="0"><code>##       s_vec cutree.hc..k...3.
 ## 1    alcool                 1
 ## 2   alcohol                 1
 ## 3 alcoholic                 1
@@ -164,36 +164,36 @@ GOAL and sample a small amount of them. Now i can use these attacking sequences 
 <li>there are 40 sequences within the dataset</li>
 <li>22 of them are unique, that means there are duplicates in there</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># inspect data</span>
-<span style="color:#a6e22e">head</span>(mydat)
-</code></pre></div><pre tabindex="0"><code>## [1] &quot;DUEL SHOT&quot;                                                                                
-## [2] &quot;SHOT&quot;                                                                                     
-## [3] &quot;PASS PASS PASS DUEL PASS PASS PASS DUEL SHOT&quot;                                             
-## [4] &quot;PASS SHOT&quot;                                                                                
-## [5] &quot;DUEL PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS DUEL SHOT&quot;
-## [6] &quot;DUEL PASS PASS PASS PASS DUEL DUEL PASS SHOT DUEL&quot;
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">length</span>(mydat)
-</code></pre></div><pre tabindex="0"><code>## [1] 40
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">length</span>(<span style="color:#a6e22e">unique</span>(mydat))
-</code></pre></div><pre tabindex="0"><code>## [1] 22
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># inspect data</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">head</span>(mydat)
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] &#34;DUEL SHOT&#34;                                                                                
+## [2] &#34;SHOT&#34;                                                                                     
+## [3] &#34;PASS PASS PASS DUEL PASS PASS PASS DUEL SHOT&#34;                                             
+## [4] &#34;PASS SHOT&#34;                                                                                
+## [5] &#34;DUEL PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS PASS DUEL SHOT&#34;
+## [6] &#34;DUEL PASS PASS PASS PASS DUEL DUEL PASS SHOT DUEL&#34;
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">length</span>(mydat)
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] 40
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">length</span>(<span style="color:#a6e22e">unique</span>(mydat))
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] 22
 </code></pre><p>Next i create a distance matrix. Here i used the package stringdist. In this package we have the
 option to choose several distance metrics as describes in <code>help(&quot;stringdist-metrics&quot;)</code>. Here i choose
 the Jaro-Winkler distance.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">dist           <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">stringdistmatrix</span>(mydat, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jw&#34;</span>)
-hc             <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">hclust</span>(<span style="color:#a6e22e">as.dist</span>(dist))
-dfClust        <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(mydat, <span style="color:#a6e22e">cutree</span>(hc, k<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>))
-<span style="color:#a6e22e">names</span>(dfClust) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;event_type&#39;</span>,<span style="color:#e6db74">&#39;cluster&#39;</span>)
-</code></pre></div><p>Displaying the results shows that the first cluster contains very short sequences. There are some
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>dist           <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">stringdistmatrix</span>(mydat, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jw&#34;</span>)
+</span></span><span style="display:flex;"><span>hc             <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">hclust</span>(<span style="color:#a6e22e">as.dist</span>(dist))
+</span></span><span style="display:flex;"><span>dfClust        <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(mydat, <span style="color:#a6e22e">cutree</span>(hc, k<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">names</span>(dfClust) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;event_type&#39;</span>,<span style="color:#e6db74">&#39;cluster&#39;</span>)
+</span></span></code></pre></div><p>Displaying the results shows that the first cluster contains very short sequences. There are some
 DUEL events in there and two sequences ending by a goal. The second cluster includes sequences that
 end with a SHOT  and one with a GOAL and are longer sequences.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster1 <span style="color:#f92672">&lt;-</span> dfClust<span style="color:#a6e22e">[which</span>(dfClust<span style="color:#f92672">$</span>cluster <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>),]
-cluster2 <span style="color:#f92672">&lt;-</span> dfClust<span style="color:#a6e22e">[which</span>(dfClust<span style="color:#f92672">$</span>cluster <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>),]
-
-counts1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">table</span>(cluster1<span style="color:#f92672">$</span>event_type))
-counts2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">table</span>(cluster2<span style="color:#f92672">$</span>event_type))
-
-<span style="color:#a6e22e">kable</span>(counts1)
-</code></pre></div><table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>cluster1 <span style="color:#f92672">&lt;-</span> dfClust<span style="color:#a6e22e">[which</span>(dfClust<span style="color:#f92672">$</span>cluster <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>),]
+</span></span><span style="display:flex;"><span>cluster2 <span style="color:#f92672">&lt;-</span> dfClust<span style="color:#a6e22e">[which</span>(dfClust<span style="color:#f92672">$</span>cluster <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>),]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>counts1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">table</span>(cluster1<span style="color:#f92672">$</span>event_type))
+</span></span><span style="display:flex;"><span>counts2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">table</span>(cluster2<span style="color:#f92672">$</span>event_type))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">kable</span>(counts1)
+</span></span></code></pre></div><table>
 <thead>
 <tr>
 <th style="text-align:left">Var1</th>
@@ -247,8 +247,8 @@ counts2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sor
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">kable</span>(counts2)
-</code></pre></div><table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">kable</span>(counts2)
+</span></span></code></pre></div><table>
 <thead>
 <tr>
 <th style="text-align:left">Var1</th>
@@ -373,7 +373,7 @@ by club.</p>
         <h4 class="page-header">Comments</h4>
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

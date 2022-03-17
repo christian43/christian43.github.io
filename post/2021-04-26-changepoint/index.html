@@ -58,7 +58,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.92.1" />
+ <meta name="generator" content="Hugo 0.94.2" />
         
 
         
@@ -138,15 +138,15 @@ Otto</a>
 auf ihrer Homepage. Etwas ausführlicher beschäftigen sich <a href="https://arxiv.org/pdf/2003.06222.pdf">Burg &amp; Williams
 (2020)</a> mit den verschiedenen Ansätzen.</p>
 <p>Der Datensatz ist vorab schon bearbeitet und bereinigt.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># load package</span>
-
-<span style="color:#a6e22e">library</span>(changepoint)
-
-<span style="color:#75715e"># inspect data</span>
-
-<span style="color:#a6e22e">str</span>(myrun)
-</code></pre></div><pre tabindex="0"><code>'data.frame':	2215 obs. of  10 variables:
- $ activity_id: chr  &quot;bae93b27-755d-440d-b964-4f83bd42faff&quot; &quot;bae93b27-755d-440d-b964-4f83bd42faff&quot; &quot;bae93b27-755d-440d-b964-4f83bd42faff&quot; &quot;bae93b27-755d-440d-b964-4f83bd42faff&quot; ...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># load package</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(changepoint)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># inspect data</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">str</span>(myrun)
+</span></span></code></pre></div><pre tabindex="0"><code>&#39;data.frame&#39;:	2215 obs. of  10 variables:
+ $ activity_id: chr  &#34;bae93b27-755d-440d-b964-4f83bd42faff&#34; &#34;bae93b27-755d-440d-b964-4f83bd42faff&#34; &#34;bae93b27-755d-440d-b964-4f83bd42faff&#34; &#34;bae93b27-755d-440d-b964-4f83bd42faff&#34; ...
  $ altitude   : num  37.8 37.8 37.8 37.8 37.8 37.8 37.8 37.8 37.8 37.8 ...
  $ cadence    : logi  NA NA NA NA NA NA ...
  $ distance   : num  4.1 11.1 23.6 37 50.6 ...
@@ -157,32 +157,32 @@ auf ihrer Homepage. Etwas ausführlicher beschäftigen sich <a href="https://arx
  $ index      : int  1 2 3 4 5 6 7 8 9 10 ...
  $ pace       : num  41.7 15.2 8.3 6.4 6.2 6.2 6.2 6 6 6.2 ...
 </code></pre><p>Mich interessiert vor allem die Laufgeschwindigkeit, die als Variable Speed vorliegt.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># plot it </span>
-
-<span style="color:#a6e22e">plot</span>(myrun<span style="color:#f92672">$</span>speed, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;l&#34;</span>,
-	 xlab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Index&#34;</span>,
-	 ylab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Speed [m/s]&#34;</span>,
-	 main <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My evening run&#34;</span>)
-</code></pre></div><p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># plot it </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">plot</span>(myrun<span style="color:#f92672">$</span>speed, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;l&#34;</span>,
+</span></span><span style="display:flex;"><span>	 xlab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Index&#34;</span>,
+</span></span><span style="display:flex;"><span>	 ylab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Speed [m/s]&#34;</span>,
+</span></span><span style="display:flex;"><span>	 main <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My evening run&#34;</span>)
+</span></span></code></pre></div><p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
 <p>Auf den ersten Blick eigentlich recht konstant. Normalerweise laufe ich zur Erwärmung ein paar
 Minuten langsamer, um dann am Parkeingang eine kleine Pause für Dehnungsübungen zu machen.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># detect change points</span>
-
-cpt <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cpt.mean</span>(myrun<span style="color:#f92672">$</span>speed,
-				method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PELT&#34;</span>,
-				penalty <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BIC&#34;</span>,
-				class <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
-cpt
-</code></pre></div><pre tabindex="0"><code>[1]   56  146 2043 2156 2215
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># detect change points</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cpt <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cpt.mean</span>(myrun<span style="color:#f92672">$</span>speed,
+</span></span><span style="display:flex;"><span>				method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PELT&#34;</span>,
+</span></span><span style="display:flex;"><span>				penalty <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BIC&#34;</span>,
+</span></span><span style="display:flex;"><span>				class <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>)
+</span></span><span style="display:flex;"><span>cpt
+</span></span></code></pre></div><pre tabindex="0"><code>[1]   56  146 2043 2156 2215
 </code></pre><p>Die Ausgabe zeigt die Punkte auf der X-Achse, die nun auch visualisiert werden können.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># plot it again and mark the points</span>
-
-<span style="color:#a6e22e">plot</span>(myrun<span style="color:#f92672">$</span>speed, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;l&#34;</span>,
-	 xlab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Index&#34;</span>,
-	 ylab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Speed [m/s]&#34;</span>,
-	 main <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My evening run&#34;</span>)
-<span style="color:#a6e22e">abline</span>(v <span style="color:#f92672">=</span> cpt, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;red&#34;</span>) 
-</code></pre></div><p><img src="figure/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># plot it again and mark the points</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">plot</span>(myrun<span style="color:#f92672">$</span>speed, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;l&#34;</span>,
+</span></span><span style="display:flex;"><span>	 xlab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Index&#34;</span>,
+</span></span><span style="display:flex;"><span>	 ylab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Speed [m/s]&#34;</span>,
+</span></span><span style="display:flex;"><span>	 main <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My evening run&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">abline</span>(v <span style="color:#f92672">=</span> cpt, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;red&#34;</span>) 
+</span></span></code></pre></div><p><img src="figure/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"></p>
 <p>Was für einen Lauf geht, geht natürlich auch für ein Set von Läufen. So können Segmente gefiltert
 werden und beispielsweise die Erwärmung oder andere definierte Abschnitte genauer analysiert werden.</p>
 </div>
@@ -252,7 +252,7 @@ werden und beispielsweise die Erwärmung oder andere definierte Abschnitte genau
         <h4 class="page-header">Comments</h4>
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
