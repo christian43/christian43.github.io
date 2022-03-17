@@ -5,7 +5,17 @@
     <link>https://christian43.github.io/categories/research/</link>
     <description>Recent content in Research on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://christian43.github.io/categories/research/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Mar 2022 07:39:30 +0200</lastBuildDate><atom:link href="https://christian43.github.io/categories/research/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Analyse Kinexon Data</title>
+      <link>https://christian43.github.io/project/kinexon_handball/</link>
+      <pubDate>Thu, 17 Mar 2022 07:39:30 +0200</pubDate>
+      
+      <guid>https://christian43.github.io/project/kinexon_handball/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Footbonaut</title>
       <link>https://christian43.github.io/project/footbonaut/</link>
