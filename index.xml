@@ -6,7 +6,7 @@
     <description>Recent content on Christian Saal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://christian43.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analyse Kinexon Data</title>
       <link>https://christian43.github.io/project/kinexon_handball/</link>
@@ -63,14 +63,24 @@ Method In my thesis a Footbonaut testing procedure (FSPT Footbonaut Short Passin
     </item>
     
     <item>
+      <title>New Project in Handball Sport</title>
+      <link>https://christian43.github.io/post/2022-06-06-twitter/2022-06-06/</link>
+      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://christian43.github.io/post/2022-06-06-twitter/2022-06-06/</guid>
+      <description>Anwendungspotential eines inertialsensorbasierten Tracking-Systems zur Trainingssteuerung im Nachwuchsleistungshandball Many thx to @BISp_Bund for funding our research project on &amp;quot;training load analysis by latest IMU-based tracking technology in elite handball players&amp;quot;🙏Looking forward to discuss next steps with @saalcs, @chbaumgart, @UniLeipzig, @DHB_Teams and @kinexon👍
+&amp;mdash; Matthias W. Hoppe (@MW_Hoppe) May 30, 2022 More details on BiSp Surf.</description>
+    </item>
+    
+    <item>
       <title>Jogging thoughts</title>
       <link>https://christian43.github.io/post/2022-02-07-running/2022-02-07/</link>
       <pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://christian43.github.io/post/2022-02-07-running/2022-02-07/</guid>
       <description>Running is just controlling after fall
- What? Why? Today i was running my short 4km cycle. Sometimes while i am running i catch my self how i check and analyse my running technique.
-Some thoughts today  keep an upright running position (make yourself big) hold hands loosely with elbows flexed (triangle) minimize braking forces during foot strike spend some power in hopping (vertical force) try to run light-footed  Just start running and do not change (intensity and volume) until you are able to run 45min with a stable heart rate pattern</description>
+What? Why? Today i was running my short 4km cycle. Sometimes while i am running i catch my self how i check and analyse my running technique.
+Some thoughts today keep an upright running position (make yourself big) hold hands loosely with elbows flexed (triangle) minimize braking forces during foot strike spend some power in hopping (vertical force) try to run light-footed Just start running and do not change (intensity and volume) until you are able to run 45min with a stable heart rate pattern</description>
     </item>
     
     <item>
@@ -79,7 +89,7 @@ Some thoughts today  keep an upright running position (make yourself big) hold h
       <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://christian43.github.io/post/2021-12-20-xmas/</guid>
-      <description># t sin(t) Xmas tree, see https://community.wolfram.com/groups/-/m/t/175891  library(rgl)  t &amp;lt;- seq(0, 100, by = 0.7)^0.6 x &amp;lt;- t * c(sin(t), sin(t + pi)) y &amp;lt;- t * c(cos(t), cos(t + pi)) z &amp;lt;- -2 * c(t, t) color &amp;lt;- rep(c(&amp;#34;darkgreen&amp;#34;, &amp;#34;gold&amp;#34;), each = length(t))  #open3d(windowRect = c(100, 100, 600, 600), zoom = 0.9) #bg3d(&amp;#34;black&amp;#34;) #spheres3d(x, y, z, radius = 0.3, color = color)  # Export (requires 3rd party tool &amp;#34;ImageMagick&amp;#34; resp.</description>
+      <description># t sin(t) Xmas tree, see https://community.wolfram.com/groups/-/m/t/175891 library(rgl) t &amp;lt;- seq(0, 100, by = 0.7)^0.6 x &amp;lt;- t * c(sin(t), sin(t + pi)) y &amp;lt;- t * c(cos(t), cos(t + pi)) z &amp;lt;- -2 * c(t, t) color &amp;lt;- rep(c(&amp;#34;darkgreen&amp;#34;, &amp;#34;gold&amp;#34;), each = length(t)) #open3d(windowRect = c(100, 100, 600, 600), zoom = 0.9) #bg3d(&amp;#34;black&amp;#34;) #spheres3d(x, y, z, radius = 0.3, color = color) # Export (requires 3rd party tool &amp;#34;ImageMagick&amp;#34; resp.</description>
     </item>
     
     <item>
@@ -130,7 +140,7 @@ Code At first we will need a picture. Every stands and falls with the picture.</
       
       <guid>https://christian43.github.io/post/2021-07-09-serialletter/2021-07-09-serialletter/</guid>
       <description>Serial Documents Often i have a task were i have to send documents or letters with an equal layout but different informations on it. The most prominient task surely are serial letters. To solve this task i use either MS Word or preferably LaTeX. The latter impresses with its excellent typesetting system.
-What you need  data source LaTeX template  The data source often comes as a plain formatted csv file.</description>
+What you need data source LaTeX template The data source often comes as a plain formatted csv file. Sure MS Word also reads Excel files directly.</description>
     </item>
     
     <item>
@@ -149,8 +159,9 @@ The authors used the FIFA20 dataset to train a random forest model that predicts
       <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://christian43.github.io/post/2021-05-07-levenshtein/</guid>
-      <description>Distance between strings  Edit distance, also called Levensthein distance, is a measure of the number of primary edits that would need to be made to transform one string into another. &amp;ndash; Jack Davies Here is a small example where the function adist() from the R Utils package that is part of the R Distribution.
- we create a vector containing six words next we calculate the edit distance then using a hierachical cluster analysis to find similarities  s_vec &amp;lt;- c(&amp;#34;alcool&amp;#34;,&amp;#34;alcohol&amp;#34;,&amp;#34;alcoholic&amp;#34;,&amp;#34;brandy&amp;#34;,&amp;#34;brandie&amp;#34;,&amp;#34;cachaça&amp;#34;) dist &amp;lt;- adist(s_vec) hc &amp;lt;- hclust(as.</description>
+      <description>Distance between strings Edit distance, also called Levensthein distance, is a measure of the number of primary edits that would need to be made to transform one string into another. &amp;ndash; Jack Davies
+Here is a small example where the function adist() from the R Utils package that is part of the R Distribution.
+we create a vector containing six words next we calculate the edit distance then using a hierachical cluster analysis to find similarities s_vec &amp;lt;- c(&amp;#34;alcool&amp;#34;,&amp;#34;alcohol&amp;#34;,&amp;#34;alcoholic&amp;#34;,&amp;#34;brandy&amp;#34;,&amp;#34;brandie&amp;#34;,&amp;#34;cachaça&amp;#34;) dist &amp;lt;- adist(s_vec) hc &amp;lt;- hclust(as.</description>
     </item>
     
     <item>
@@ -192,7 +203,8 @@ Eine schöne Übersicht über die verschiedenen Vorgehensweisen bietet Saskia Ot
       
       <guid>https://christian43.github.io/about/</guid>
       <description>No one knows with certainty if it will rain tomorrow, but my decision to carry an umbrella will differ depending on the probability.
-&amp;ndash; Andrew Ng After studying sport science in Berlin and finishing my Ph.D. at the University Leipzig i work now as a research assistant in Leipzig. Get a short CV.
+&amp;ndash; Andrew Ng
+After studying sport science in Berlin and finishing my Ph.D. at the University Leipzig i work now as a research assistant in Leipzig. Get a short CV.
 I am interested in analysing data from different sources and delivering data-driven decision support. Ideally these data sources are connected with sport areas such as performance, movements, training or competition.</description>
     </item>
     

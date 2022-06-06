@@ -40,7 +40,7 @@
       <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://christian43.github.io/post/2021-12-20-xmas/</guid>
-      <description># t sin(t) Xmas tree, see https://community.wolfram.com/groups/-/m/t/175891  library(rgl)  t &amp;lt;- seq(0, 100, by = 0.7)^0.6 x &amp;lt;- t * c(sin(t), sin(t + pi)) y &amp;lt;- t * c(cos(t), cos(t + pi)) z &amp;lt;- -2 * c(t, t) color &amp;lt;- rep(c(&amp;#34;darkgreen&amp;#34;, &amp;#34;gold&amp;#34;), each = length(t))  #open3d(windowRect = c(100, 100, 600, 600), zoom = 0.9) #bg3d(&amp;#34;black&amp;#34;) #spheres3d(x, y, z, radius = 0.3, color = color)  # Export (requires 3rd party tool &amp;#34;ImageMagick&amp;#34; resp.</description>
+      <description># t sin(t) Xmas tree, see https://community.wolfram.com/groups/-/m/t/175891 library(rgl) t &amp;lt;- seq(0, 100, by = 0.7)^0.6 x &amp;lt;- t * c(sin(t), sin(t + pi)) y &amp;lt;- t * c(cos(t), cos(t + pi)) z &amp;lt;- -2 * c(t, t) color &amp;lt;- rep(c(&amp;#34;darkgreen&amp;#34;, &amp;#34;gold&amp;#34;), each = length(t)) #open3d(windowRect = c(100, 100, 600, 600), zoom = 0.9) #bg3d(&amp;#34;black&amp;#34;) #spheres3d(x, y, z, radius = 0.3, color = color) # Export (requires 3rd party tool &amp;#34;ImageMagick&amp;#34; resp.</description>
     </item>
     
     <item>
@@ -79,8 +79,9 @@ The authors used the FIFA20 dataset to train a random forest model that predicts
       <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://christian43.github.io/post/2021-05-07-levenshtein/</guid>
-      <description>Distance between strings  Edit distance, also called Levensthein distance, is a measure of the number of primary edits that would need to be made to transform one string into another. &amp;ndash; Jack Davies Here is a small example where the function adist() from the R Utils package that is part of the R Distribution.
- we create a vector containing six words next we calculate the edit distance then using a hierachical cluster analysis to find similarities  s_vec &amp;lt;- c(&amp;#34;alcool&amp;#34;,&amp;#34;alcohol&amp;#34;,&amp;#34;alcoholic&amp;#34;,&amp;#34;brandy&amp;#34;,&amp;#34;brandie&amp;#34;,&amp;#34;cachaça&amp;#34;) dist &amp;lt;- adist(s_vec) hc &amp;lt;- hclust(as.</description>
+      <description>Distance between strings Edit distance, also called Levensthein distance, is a measure of the number of primary edits that would need to be made to transform one string into another. &amp;ndash; Jack Davies
+Here is a small example where the function adist() from the R Utils package that is part of the R Distribution.
+we create a vector containing six words next we calculate the edit distance then using a hierachical cluster analysis to find similarities s_vec &amp;lt;- c(&amp;#34;alcool&amp;#34;,&amp;#34;alcohol&amp;#34;,&amp;#34;alcoholic&amp;#34;,&amp;#34;brandy&amp;#34;,&amp;#34;brandie&amp;#34;,&amp;#34;cachaça&amp;#34;) dist &amp;lt;- adist(s_vec) hc &amp;lt;- hclust(as.</description>
     </item>
     
     <item>
